@@ -1,0 +1,7 @@
+IPFOUR TOS=(%{WORD:typeofservice}).?*PREC=(%{WORD:prec}).?*TTL=(%{WORD:timetolive}).?*ID=(%{WORD:id})?.*
+IPSIX TC=(%{WORD:traffic-class}).?*HOPLIMIT=(%{WORD:hoplimit}).?*FLOWLBL=(%{WORD:flowlabel})?.*
+PROTOCOL PROTO=(%{WORD:protocol})
+PORTS SPT=(%{WORD:sourceport})?.*DPT=(%{WORD:destinationport})
+ICMP TYPE=(%{WORD:icmp-type})?.*CODE=(%{WORD:icmp-code})
+PACKETFILTER (%{SYSLOGTIMESTAMP:timestamp}) (%{HOSTNAME:logsource}) Shorewall:?(%{DATA:source}):(%{DATA:action}): IN=(%{USERNAME:incoming})?.*(OUT= *MAC=(%{COMMONMAC:dst_mac}):(%{COMMONMAC:src_mac})?|OUT=%{USERNAME:outgoing}).*SRC=(%{IP:sourceip}).*DST=(%{IP:destinationip}).*LEN=(%{WORD:len1})
+PFLTR %{PACKETFILTER} ?(%{IPFOUR}|%{IPSIX}) (?:%{PROTOCOL}) ?(%{PORTS}|%{ICMP?})?
