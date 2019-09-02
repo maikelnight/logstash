@@ -1,3 +1,3 @@
 # logstash
-Grok Filter to use logstash and parse shorewall log file
-Elasticsearch config File to 
+- Grok Filter to use logstash and parse shorewall log file
+- Logstash config File to push to elasticsearch server
