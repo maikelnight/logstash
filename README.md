@@ -10,3 +10,5 @@
 - Use Log Format LOGFORMAT="Shorewall:%s:%s:" in shorewall.conf (both shorewall and shorewall6)
 
 - Use ULOGD to log to separate Log File in shorewall
+
+- Use :NFLOG Switch in your shorewall rules
